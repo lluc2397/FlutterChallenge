@@ -34,17 +34,17 @@ The http library allows us to interact with the urls.
 
 #### DB schema
 1.- Project:
-    name : charfield
-    web : urlfield
-    descrp : textfield
-    img : imageField 
-    budget : decimalField 
-    closing date : dateTimeField
-    is open : Booleanfield (should be implemented in the backend. If current date > closing date, is_open == False)
+    - name : charfield
+    - web : urlfield
+    - descrp : textfield
+    - img : imageField 
+    - budget : decimalField 
+    - closing date : dateTimeField
+    - is open : Booleanfield (should be implemented in the backend. If current date > closing date, is_open == False)
 
 2.- Stackeholder
-    fullname : charfield 
-    email : emailField 
-    web : urlfield 
-    projecs founded : M2M (related to projects)
-    amount : decimalField 
+    - fullname : charfield 
+    - email : emailField 
+    - web : urlfield 
+    - projecs founded : M2M (related to projects)
+    - amount : decimalField 
