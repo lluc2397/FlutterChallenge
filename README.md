@@ -33,7 +33,7 @@ The http library allows us to interact with the urls.
 - final == const (js)
 
 #### DB schema
-1.- Project:
+##### - Project:
     - name : charfield
     - web : urlfield
     - descrp : textfield
@@ -42,7 +42,7 @@ The http library allows us to interact with the urls.
     - closing date : dateTimeField
     - is open : Booleanfield (should be implemented in the backend. If current date > closing date, is_open == False)
 
-2.- Stackeholder
+##### - Stackeholder
     - fullname : charfield 
     - email : emailField 
     - web : urlfield 
