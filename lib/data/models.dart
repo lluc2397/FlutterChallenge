@@ -1,3 +1,5 @@
+import 'dart:io';
+
 final String tableProjects = 'projects';
 final String tableStackeholders = 'stackeholders';
 
@@ -23,7 +25,7 @@ class Project {
   final String name;
   final String web;
   final String description;
-  final String img;
+  final File img;
   final double budget;
   final DateTime closingDate;
   final bool isOpened;
@@ -44,7 +46,7 @@ class Project {
     String? name,
     String? web,
     String? description,
-    String? img,
+    File? img,
     double? budget,
     DateTime? closingDate,
     bool? isOpened,
@@ -65,7 +67,7 @@ class Project {
         name: json[ProjectFields.name] as String,
         web: json[ProjectFields.web] as String,
         description: json[ProjectFields.description] as String,
-        img: json[ProjectFields.img] as String,
+        img: json[ProjectFields.img] as File,
         budget: json[ProjectFields.budget] as double,
         closingDate: DateTime.parse(json[ProjectFields.closingDate] as String),
         isOpened: json[ProjectFields.isOpened] == 1,
@@ -104,7 +106,7 @@ class Stackeholder {
   final String fullName;
   final String email;
   final String web;
-  final String projecsFounded;
+  final List projecsFounded;
   final double amount;
 
   const Stackeholder({
@@ -121,7 +123,7 @@ class Stackeholder {
     String? fullName,
     String? email,
     String? web,
-    String? projecsFounded,
+    List? projecsFounded,
     double? amount,
   }) =>
       Stackeholder(
@@ -138,7 +140,7 @@ class Stackeholder {
         fullName: json[StackeholderFields.fullName] as String,
         email: json[StackeholderFields.email] as String,
         web: json[StackeholderFields.web] as String,
-        projecsFounded: json[StackeholderFields.projecsFounded] as String,
+        projecsFounded: json[StackeholderFields.projecsFounded] as List,
         amount: json[StackeholderFields.amount] as double,
       );
 

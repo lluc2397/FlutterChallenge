@@ -60,10 +60,16 @@ class ONGDatabase {
       ''');
         }
 
-  Future<Project> create(Project project) async {
+  Future<Project> createProject(Project project) async {
     final db = await instance.database;
     final id = await db.insert(tableProjects, project.toJson());
     return project.copy(id: id);
+  }
+
+  Future<Stackeholder> createStackeholder(Stackeholder stackeholder) async {
+    final db = await instance.database;
+    final id = await db.insert(tableStackeholders, stackeholder.toJson());
+    return stackeholder.copy(id: id);
   }
 
 

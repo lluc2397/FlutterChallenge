@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart' as intl;
 import 'dart:io';
+import 'package:trialing/data/database.dart';
+import 'package:trialing/data/models.dart';
 
 class AddProjectsView extends StatefulWidget {
   const AddProjectsView({Key? key}) : super(key: key);
@@ -15,7 +17,7 @@ class _AddProjectsViewState extends State<AddProjectsView> {
   String name = '';
   String web = '';
   String description = '';
-  File? image;
+  File image = File('');
 
   Future pickImage() async {
     final image = await ImagePicker().pickImage(source: ImageSource.gallery);
@@ -26,6 +28,20 @@ class _AddProjectsViewState extends State<AddProjectsView> {
 
   DateTime closingDate = DateTime.now();
   double budget = 0;
+
+  Future addProject() async {
+  final project = Project(
+    name : name,
+    web : web,
+    description : description,
+    img : image,
+    budget : budget,
+    closingDate : closingDate,
+    isOpened : true,
+  );
+
+  await ONGDatabase.instance.createProject(project);
+}
 
   @override
   Widget build(BuildContext context) {
@@ -159,6 +175,7 @@ class _AddProjectsViewState extends State<AddProjectsView> {
                               if (_formKey.currentState!.validate()) {
                                 // Process data. Send it to the backend
                                 // widget.client.post(createUrl);
+                                addProject();
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(content: Text('Project added')),
                                 );
@@ -188,6 +205,8 @@ class _AddProjectsViewState extends State<AddProjectsView> {
     );
   }
 }
+
+
 
 class _FormDatePicker extends StatefulWidget {
   final DateTime date;

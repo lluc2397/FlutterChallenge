@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart' as intl;
 import 'package:multi_select_flutter/multi_select_flutter.dart';
 import 'package:trialing/data/dummy_data.dart';
+import 'package:trialing/data/database.dart';
 import 'package:trialing/data/models.dart';
 
 class AddStackeholdersView extends StatelessWidget {
@@ -34,6 +35,18 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   List<Object?> selectedProjects = [];
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  Future addStackeholder() async {
+  final stackeholder = Stackeholder(
+    fullName: fullname,
+    email: email,
+    web: web,
+    projecsFounded: selectedProjects,
+    amount: budget,
+  );
+
+  await ONGDatabase.instance.createStackeholder(stackeholder);
+}
 
 
   @override
@@ -180,6 +193,7 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
                               if (_formKey.currentState!.validate()) {
                                 // Process data. Send it to the backend
                                 // widget.client.post(createUrl);
+                                addStackeholder();
                                 ScaffoldMessenger.of(context).showSnackBar(
                                   const SnackBar(content: Text('Stackeholder added')),
                                 );
