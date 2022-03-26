@@ -7,7 +7,7 @@ The dashboard where the ONG can see the projects, stackeholders and their relati
 
 ## Widgets
 At the begginig the button was with the dashboard, as I wanted to create more widgets (cards) I decided to separate it from the main dashboard as the cards could be reused for other purposes.
-
+Some buttons in the dashboard view are ugly and differents just because I was testing how to modify their appearance
 
 ## Forms
 The part where the ONG can add a new project or stackeholder to the DB
